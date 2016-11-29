@@ -41,6 +41,7 @@ public class GameManagerImpl implements GameManager {
   public Game joinGame(String gameId, String userId) {
     Game game = null;
     try {
+    //lock for race condition for same game
       game = gameRepository.lockAndGet(gameId);
       if (game.getPlayer2() != null) {
         throw new NoPlayerSpaceException("Game does not have room for new player");
@@ -66,6 +67,7 @@ public class GameManagerImpl implements GameManager {
   public Game play(String gameId, String userId, int column) {
     Game game = null;
     try {
+      //lock for race condition for same game
       game = gameRepository.lockAndGet(gameId);
       if (GameStatus.CREATED.equals(game.getStatus())) {
         throw new InvalidGameStatusException("Game does not have enough players");

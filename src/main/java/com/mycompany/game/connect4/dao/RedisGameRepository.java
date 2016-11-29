@@ -18,7 +18,10 @@ public class RedisGameRepository implements GameRepository {
 
   @Autowired
   private RedisTemplate<String, Game> template;
-
+ 
+  /**
+   * Used for concurrency management by distributed locking
+   */
   private LockRegistry redisLockRegistry;
 
   @Override

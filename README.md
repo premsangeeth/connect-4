@@ -24,16 +24,20 @@ $ ./gradle bootRun
 ### REST Services
 ##### Create Game
 method:GET
+
 URI:/connect-4/new?userId={userId}&color={YELLOW/RED}
 
 #### Get Game
 method:GET
+
 URI:/connect-4/{gameId}
 
 #### Join Game
 method:PUT
+
 URI:/connect-4/{gameId}/join/{userId}
 
 #### Play Game
 method:PUT
+
 URI:/connect-4/{gameId}/play/{userId}/{column}
